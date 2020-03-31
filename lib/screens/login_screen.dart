@@ -2,6 +2,7 @@ import 'package:eluminousmobile/animations/fade_animator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eluminousmobile/constants/k_login_screen.dart';
+import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -9,6 +10,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _passwordFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _passwordFocusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +98,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: TextFormField(
                                       decoration: fInputEmailDecoration,
                                       keyboardType: TextInputType.emailAddress,
+                                      textInputAction: TextInputAction.next,
+                                      onFieldSubmitted: (value) => FocusScope.of(context).requestFocus(_passwordFocusNode),
                                     ),
                                   ),
                                   Divider(
@@ -100,6 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: TextFormField(
                                       decoration: fInputPasswordDecoration,
                                       obscureText: true,
+                                      textInputAction: TextInputAction.done,
+                                      focusNode: _passwordFocusNode,
                                     ),
                                   ),
                                 ],

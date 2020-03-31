@@ -1,3 +1,4 @@
+import 'package:eluminousmobile/animations/fade_animator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eluminousmobile/constants/k_login_screen.dart';
@@ -25,16 +26,35 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "eLuminous",
-                    style: kHeaderTextStyle,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FadeAnimation(
+                        delay: 1.0,
+                        child: Text(
+                          "eLuminous",
+                          style: kHeaderTextStyle,
+                        ),
+                      ),
+                      FadeAnimation(
+                        delay: 1.0,
+                        child: Icon(
+                          Icons.school,
+                          color: Colors.white,
+                          size: 90.0,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text(
-                    "Welcome Back",
-                    style: kSubHeaderTextStyle,
+                  FadeAnimation(
+                    delay: 1.3,
+                    child: Text(
+                      "Welcome Back",
+                      style: kSubHeaderTextStyle,
+                    ),
                   ),
                 ],
               ),
@@ -43,7 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                 decoration: fStackedBoxDecoration,
                 child: Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.0,
+                  ),
                   child: Form(
                     child: SingleChildScrollView(
                       child: Column(
@@ -51,78 +73,87 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: 50.0,
                           ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            elevation: 13.0,
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(10.0),
-                                  decoration: fBaseOfInputsBoxDecoration,
-                                  child: TextFormField(
-                                    decoration: fInputEmailDecoration,
-                                    keyboardType: TextInputType.emailAddress,
-                                  ),
-                                ),
-                                Divider(
-                                  color: Colors.grey[900],
-                                  height: 10.0,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10.0),
-                                  decoration: fBaseOfInputsBoxDecoration,
-                                  child: TextFormField(
-                                    decoration: fInputPasswordDecoration,
-                                    obscureText: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 40.0,
-                          ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text(
-                              'No Account? Sign Up',
-                              style: fSecondaryButtonDecoration,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              // TODO: Save Form
-                              print('Form Saved');
-                            },
-                            child: Container(
-                              height: 50.0,
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 60.0,
+                          FadeAnimation(
+                            delay: 1.6,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
                               ),
-                              decoration: fSignInButtonDecoration,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              elevation: 10.0,
+                              child: Column(
                                 children: <Widget>[
-                                  Icon(
-                                    Icons.send,
-                                    color: Colors.white,
+                                  Container(
+                                    padding: EdgeInsets.all(10.0),
+                                    decoration: fBaseOfInputsBoxDecoration,
+                                    child: TextFormField(
+                                      decoration: fInputEmailDecoration,
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
                                   ),
-                                  SizedBox(
-                                    width: 10.0,
+                                  Divider(
+                                    color: Colors.grey[900],
+                                    height: 10.0,
                                   ),
-                                  Text(
-                                    "Sign In",
-                                    style: kSignInButtonTextStyle,
+                                  Container(
+                                    padding: EdgeInsets.all(10.0),
+                                    decoration: fBaseOfInputsBoxDecoration,
+                                    child: TextFormField(
+                                      decoration: fInputPasswordDecoration,
+                                      obscureText: true,
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: 40.0,
+                          ),
+                          FadeAnimation(
+                            delay: 1.9,
+                            child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                'No Account? Sign Up',
+                                style: fSecondaryButtonDecoration,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          FadeAnimation(
+                            delay: 1.9,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 50.0),
+                              child: RaisedButton(
+                                color: Colors.green[500],
+                                splashColor: Colors.greenAccent[700],
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(28.0),
+                                ),
+                                padding: EdgeInsets.all(15.0),
+                                elevation: 5.0,
+                                onPressed: () {},
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.send,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Text(
+                                      "Sign In",
+                                      style: kSignInButtonTextStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),

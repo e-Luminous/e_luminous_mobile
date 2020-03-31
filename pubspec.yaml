@@ -21,7 +21,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
-  passwordfield: ^0.0.5
+  simple_animations: ^1.3.11
 
 dev_dependencies:
   flutter_test:

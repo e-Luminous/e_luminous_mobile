@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'eLuminous Mobile',
       theme: ThemeData(
-        primaryColor: Colors.green,
-        accentColor: Colors.green[500],
+        primaryColor: Colors.deepPurple[700],
+        accentColor: Colors.deepOrangeAccent,
       ),
       home: LoginScreen(),
     );

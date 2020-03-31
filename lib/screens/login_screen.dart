@@ -41,13 +41,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Icon(
                           Icons.school,
                           color: Colors.white,
-                          size: 90.0,
+                          size: 100.0,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                   ),
                   FadeAnimation(
                     delay: 1.3,
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
-                              elevation: 10.0,
+                              elevation: 14.0,
                               child: Column(
                                 children: <Widget>[
                                   Container(
@@ -91,8 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   Divider(
-                                    color: Colors.grey[900],
-                                    height: 10.0,
+                                    color: Colors.pink[900],
+                                    height: 20.0,
                                   ),
                                   Container(
                                     padding: EdgeInsets.all(10.0),
@@ -117,6 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'No Account? Sign Up',
                                 style: fSecondaryButtonDecoration,
                               ),
+
                             ),
                           ),
                           SizedBox(
@@ -127,13 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Container(
                               padding: EdgeInsets.symmetric(horizontal: 50.0),
                               child: RaisedButton(
-                                color: Colors.green[500],
-                                splashColor: Colors.greenAccent[700],
+                                color: Colors.deepOrangeAccent[200],
+                                splashColor: Colors.deepOrange,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(28.0),
                                 ),
                                 padding: EdgeInsets.all(15.0),
-                                elevation: 5.0,
+                                elevation: 10.0,
                                 onPressed: () {},
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,

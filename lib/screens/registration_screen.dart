@@ -1,3 +1,4 @@
+import 'package:eluminousmobile/animations/fade_animator.dart';
 import 'package:eluminousmobile/constants/k_login_screen.dart';
 import 'package:eluminousmobile/screens/login_screen.dart';
 import 'package:eluminousmobile/themes/light_colors.dart';
@@ -82,46 +83,49 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 Positioned(
                   top: 40,
                   left: 0,
-                  child: Container(
-                    width: width,
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Icon(
-                          Icons.keyboard_arrow_left,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "eLuminous",
-                              style: TextStyle(
-                                  fontFamily: 'Righteous',
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Icon(
-                              Icons.school,
-                              color: Colors.white,
-                              size: 50,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "Registration",
-                          style: TextStyle(
-                              color: Colors.white54,
-                              fontFamily: 'Righteous',
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                  child: FadeAnimation(
+                    delay: 1.0,
+                    child: Container(
+                      width: width,
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Icon(
+                            Icons.keyboard_arrow_left,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "eLuminous",
+                                style: TextStyle(
+                                    fontFamily: 'Righteous',
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Icon(
+                                Icons.school,
+                                color: Colors.white,
+                                size: 50,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "Registration",
+                            style: TextStyle(
+                                color: Colors.white54,
+                                fontFamily: 'Righteous',
+                                fontSize: 30,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -132,116 +136,119 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         Container(
           height: 480.0,
           padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Form(
-            key: _formState,
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 15.0,
-                ),
-                _entryField(
-                  'Email',
-                  context,
-                  controller: _emailController,
-                  labelIcon: Icons.mail,
-                ),
-                _entryField(
-                  'Password',
-                  context,
-                  controller: _passwordController,
-                  isPassword: true,
-                  labelIcon: Icons.vpn_key,
-                ),
-                _entryField(
-                  'Confirm Password',
-                  context,
-                  controller: _confirmPasswordController,
-                  isPassword: true,
-                  labelIcon: Icons.vpn_key,
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(30),
+          child: FadeAnimation(
+            delay: 1.9,
+            child: Form(
+              key: _formState,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 15.0,
                   ),
-                  child: InternationalPhoneNumberInput.withCustomDecoration(
-                    onInputChanged: (PhoneNumber number) {
-                      setState(() {
-                        _interactivePhoneNumber = number.toString();
-                      });
-                    },
-                    onSubmit: () {
-                      print(_interactivePhoneNumber);
-                    },
-                    isEnabled: true,
-                    autoValidate: false,
-                    formatInput: true,
-                    initialCountry2LetterCode: 'BD',
-                    inputDecoration: InputDecoration(
-                      hintText: 'Phone Number',
-                      border: InputBorder.none,
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30.0),
+                  _entryField(
+                    'Email',
+                    context,
+                    controller: _emailController,
+                    labelIcon: Icons.mail,
+                  ),
+                  _entryField(
+                    'Password',
+                    context,
+                    controller: _passwordController,
+                    isPassword: true,
+                    labelIcon: Icons.vpn_key,
+                  ),
+                  _entryField(
+                    'Confirm Password',
+                    context,
+                    controller: _confirmPasswordController,
+                    isPassword: true,
+                    labelIcon: Icons.vpn_key,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 15),
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: InternationalPhoneNumberInput.withCustomDecoration(
+                      onInputChanged: (PhoneNumber number) {
+                        setState(() {
+                          _interactivePhoneNumber = number.toString();
+                        });
+                      },
+                      onSubmit: () {
+                        print(_interactivePhoneNumber);
+                      },
+                      isEnabled: true,
+                      autoValidate: false,
+                      formatInput: true,
+                      initialCountry2LetterCode: 'BD',
+                      inputDecoration: InputDecoration(
+                        hintText: 'Phone Number',
+                        border: InputBorder.none,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
+                          borderSide: BorderSide(style: BorderStyle.none),
                         ),
-                        borderSide: BorderSide(style: BorderStyle.none),
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                       ),
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 45.0,
+                  SizedBox(
+                    height: 20.0,
                   ),
-                  child: RaisedButton(
-                    color: Colors.deepOrangeAccent[200],
-                    splashColor: Colors.deepOrange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 45.0,
                     ),
-                    padding: EdgeInsets.all(15.0),
-                    elevation: 10.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.send,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Text(
-                          "Sign Up",
-                          style: kSignInButtonTextStyle,
-                        ),
-                      ],
-                    ),
-                    onPressed: createUser,
-                  ),
-                ),
-                FlatButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(LoginScreen.routeName);
-                  },
-                  child: Text(
-                    'Already\'ve Account? Sign In',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Righteous',
-                      color: Colors.deepOrangeAccent,
+                    child: RaisedButton(
+                      color: Colors.deepOrangeAccent[200],
+                      splashColor: Colors.deepOrange,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                      padding: EdgeInsets.all(15.0),
+                      elevation: 10.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.send,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(
+                            "Sign Up",
+                            style: kSignInButtonTextStyle,
+                          ),
+                        ],
+                      ),
+                      onPressed: createUser,
                     ),
                   ),
-                ),
-              ],
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(LoginScreen.routeName);
+                    },
+                    child: Text(
+                      'Already\'ve Account? Sign In',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Righteous',
+                        color: Colors.deepOrangeAccent,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

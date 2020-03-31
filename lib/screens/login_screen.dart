@@ -12,11 +12,20 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _passwordFocusNode = FocusNode();
 
+  final _formState = GlobalKey<FormState>();
+
   @override
   void dispose() {
     // TODO: implement dispose
     _passwordFocusNode.dispose();
     super.dispose();
+  }
+
+  void authenticate() {
+    final isValid = _formState.currentState.validate();
+    if(!isValid) {
+      return;
+    }
   }
 
   @override
@@ -77,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     horizontal: 15.0,
                   ),
                   child: Form(
+                    key: _formState,
                     child: SingleChildScrollView(
                       child: Column(
                         children: <Widget>[
@@ -100,6 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       keyboardType: TextInputType.emailAddress,
                                       textInputAction: TextInputAction.next,
                                       onFieldSubmitted: (value) => FocusScope.of(context).requestFocus(_passwordFocusNode),
+                                      validator: (value) {
+                                        if(value.isEmpty) {
+                                          return 'Please, Enter an e-mail';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                   ),
                                   Divider(
@@ -114,6 +130,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       obscureText: true,
                                       textInputAction: TextInputAction.done,
                                       focusNode: _passwordFocusNode,
+                                      validator: (value) {
+                                        if(value.isEmpty) {
+                                          return 'Enter Password';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                   ),
                                 ],
@@ -149,7 +171,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 padding: EdgeInsets.all(15.0),
                                 elevation: 10.0,
-                                onPressed: () {},
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -166,6 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ],
                                 ),
+                                onPressed: authenticate,
                               ),
                             ),
                           )

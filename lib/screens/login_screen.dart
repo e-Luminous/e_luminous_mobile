@@ -1,11 +1,14 @@
 import 'package:eluminousmobile/animations/fade_animator.dart';
 import 'package:eluminousmobile/models/user_login.dart';
+import 'package:eluminousmobile/screens/registration_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eluminousmobile/constants/k_login_screen.dart';
 import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/login';
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -169,7 +172,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           FadeAnimation(
                             delay: 1.9,
                             child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).pushReplacementNamed(
+                                    RegistrationScreen.routeName);
+                              },
                               child: Text(
                                 'No Account? Sign Up',
                                 style: fSecondaryButtonDecoration,

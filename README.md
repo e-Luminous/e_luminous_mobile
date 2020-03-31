@@ -14,7 +14,7 @@ on building globally suitable mobile application that covers the laboratory syll
 
 SignIn             |  SignUp             | Classrooms            | 
 :-------------------------:|:-------------------------:|:-------------------------:
-| ![Login](https://gfycat.com/saddefenselessbluetickcoonhound)  |  ![Login](https://gfycat.com/saddefenselessbluetickcoonhound)  | ![Login](https://gfycat.com/saddefenselessbluetickcoonhound) |
+| ![Login](assets/screens/login.gif)  |  ![Login](assets/screens/login.gif)  | ![Login](assets/screens/login.gif) |
 
 
 

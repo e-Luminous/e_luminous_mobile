@@ -1,4 +1,5 @@
 import 'package:eluminousmobile/animations/fade_animator.dart';
+import 'package:eluminousmobile/models/user_login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eluminousmobile/constants/k_login_screen.dart';
@@ -11,21 +12,24 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _passwordFocusNode = FocusNode();
-
   final _formState = GlobalKey<FormState>();
+  var _userLogin = UserLogin(userEmail: '', userPassword: '');
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _passwordFocusNode.dispose();
     super.dispose();
   }
 
   void authenticate() {
     final isValid = _formState.currentState.validate();
-    if(!isValid) {
+    if (!isValid) {
       return;
     }
+    _formState.currentState.save();
+    print(_userLogin.userEmail);
+    print(_userLogin.userPassword);
+    // TODO: Authenticate Credentials By Sending To The Server
   }
 
   @override
@@ -109,12 +113,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                       decoration: fInputEmailDecoration,
                                       keyboardType: TextInputType.emailAddress,
                                       textInputAction: TextInputAction.next,
-                                      onFieldSubmitted: (value) => FocusScope.of(context).requestFocus(_passwordFocusNode),
+                                      onFieldSubmitted: (value) =>
+                                          FocusScope.of(context)
+                                              .requestFocus(_passwordFocusNode),
                                       validator: (value) {
-                                        if(value.isEmpty) {
+                                        if (value.isEmpty) {
                                           return 'Please, Enter an e-mail';
                                         }
                                         return null;
+                                      },
+                                      onSaved: (emailValue) {
+                                        _userLogin = UserLogin(
+                                          userEmail: emailValue,
+                                          userPassword: _userLogin.userPassword,
+                                        );
                                       },
                                     ),
                                   ),
@@ -128,13 +140,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: TextFormField(
                                       decoration: fInputPasswordDecoration,
                                       obscureText: true,
-                                      textInputAction: TextInputAction.done,
                                       focusNode: _passwordFocusNode,
+                                      textInputAction: TextInputAction.done,
                                       validator: (value) {
-                                        if(value.isEmpty) {
+                                        if (value.isEmpty) {
                                           return 'Enter Password';
                                         }
                                         return null;
+                                      },
+                                      onSaved: (passwordValue) {
+                                        _userLogin = UserLogin(
+                                          userEmail: _userLogin.userEmail,
+                                          userPassword: passwordValue,
+                                        );
+                                      },
+                                      onFieldSubmitted: (_) {
+                                        authenticate();
                                       },
                                     ),
                                   ),
@@ -153,7 +174,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'No Account? Sign Up',
                                 style: fSecondaryButtonDecoration,
                               ),
-
                             ),
                           ),
                           SizedBox(

@@ -22,7 +22,7 @@ Focusing so much on writing observation test cases and calculation in the lab do
 
 SignIn             |  SignUp             | Classrooms            | 
 :-------------------------:|:-------------------------:|:-------------------------:
-| ![Stage 01](screenshots/Stage01.png)  |  ![Stage 02]()  | ![Stage 03]() |
+| ![Login](assets/screens/login.gif)  |  ![Login](assets/screens/login.gif)  | ![Login](assets/screens/login.gif) |
 
 
 

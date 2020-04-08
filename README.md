@@ -1,4 +1,4 @@
-# eLuminous - Mobile
+# eLuminous - Firebase API Integration
 
 <p align="left">
 <br>

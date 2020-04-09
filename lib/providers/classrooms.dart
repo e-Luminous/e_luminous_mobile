@@ -10,6 +10,17 @@ class Classrooms with ChangeNotifier {
     return [..._classrooms];
   }
 
+  String removeClassroom(int classroomId) {
+    var message = "Class deleted successfully";
+    try {
+      _classrooms.removeWhere((c) => c.classroomId == classroomId);
+    } catch(exception) {
+      message = "Deletion unsuccessful";
+    }
+    notifyListeners();
+    return message;
+  }
+
   List<Classroom> _classrooms = [
     Classroom(
       classroomId: 0,

@@ -22,7 +22,6 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
         title: Text(
           'eLuminous',
           style: kAppBarTitleTextStyle,

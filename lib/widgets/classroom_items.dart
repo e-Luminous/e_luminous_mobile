@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:eluminousmobile/providers/classrooms.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ClassroomItems extends StatelessWidget {
   final int id;
@@ -25,30 +27,61 @@ class ClassroomItems extends StatelessWidget {
       key: ValueKey(id),
       confirmDismiss: (direction) {
         return showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-            title: Text('Are you sure?'),
-            content: Text('Do you want to remove from the classes?'),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('No'),
-                onPressed: () {
-                  Navigator.of(ctx).pop(false);
-                },
-              ),
-              FlatButton(
-                child: Text('Yes'),
-                onPressed: () {
-                  Navigator.of(ctx).pop(true);
-                },
-              ),
-            ],
-          )
-        );
+            context: context,
+            builder: (ctx) => AlertDialog(
+                  title: Text('Are you sure?'),
+                  content: Text('Do you want to remove from the classes?'),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('No'),
+                      onPressed: () {
+                        Navigator.of(ctx).pop(false);
+                      },
+                    ),
+                    FlatButton(
+                      child: Text('Yes'),
+                      onPressed: () {
+                        Navigator.of(ctx).pop(true);
+                      },
+                    ),
+                  ],
+                ));
       },
       onDismissed: (direction) {
+        final message =
+            Provider.of<Classrooms>(context, listen: false).removeClassroom(id);
 
+        Scaffold.of(context).showSnackBar(
+          new SnackBar(
+            backgroundColor: Colors.black54,
+            content: Row(
+              children: <Widget>[
+                Icon(Icons.delete_outline, color: Colors.deepOrangeAccent,),
+                SizedBox(width: 10.0,),
+                Text(
+                  message,
+                  style: TextStyle(fontSize: 18.0),
+                )
+              ],
+            ),
+          ),
+        );
       },
+      direction: DismissDirection.endToStart,
+      background: Container(
+        color: Theme.of(context).errorColor,
+        child: Icon(
+          Icons.delete,
+          color: Colors.white,
+          size: 40.0,
+        ),
+        alignment: Alignment.centerRight,
+        padding: EdgeInsets.all(20.0),
+        margin: EdgeInsets.symmetric(
+          horizontal: 15.0,
+          vertical: 4.0,
+        ),
+      ),
       child: Container(
         height: 180.0,
         margin: const EdgeInsets.symmetric(

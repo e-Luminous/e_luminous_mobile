@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ClassroomItems extends StatelessWidget {
@@ -56,15 +58,53 @@ class ClassroomItems extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    "Section - $section",
-                    style: TextStyle(
-                      fontFamily: 'Sans',
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  SizedBox(height: 15.0),
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        shift == "Morning" ? Icons.brightness_high : Icons.brightness_6,
+                        color: shift == "Morning" ? Colors.orange[700] : Colors.grey[800],
+                      ),
+                      SizedBox(width: 3.0,),
+                      Text(
+                        "$shift",
+                        style: TextStyle(
+                          fontFamily: 'Sans',
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        width: shift == "Morning" ? 10.0 : 35.0,
+                      ),
+                      Icon(
+                        Icons.group,
+                        color: Colors.indigoAccent,
+                      ),
+                      SizedBox(width: 3.0,),
+                      Text(
+                        "Section - $section",
+                        style: TextStyle(
+                          fontFamily: 'Sans',
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 15.0),
+                  Row(
+                    children: <Widget>[
+                      GestureDetector(
+                        child: Icon(
+                          Icons.content_copy,
+                          size: 20.0,
+                        ),
+                        onTap: () {},
+                      ),
+                      SizedBox(width: 3.0,),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -73,7 +113,8 @@ class ClassroomItems extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 5.0),
             alignment: FractionalOffset.centerLeft,
             child: Image(
-              image: AssetImage("assets/images/planet0.png"),
+              image: AssetImage(
+                  "assets/images/planet${new Random().nextInt(5)}.png"),
               height: 108.0,
               width: 108.0,
             ),

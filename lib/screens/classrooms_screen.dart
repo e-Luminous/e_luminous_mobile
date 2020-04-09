@@ -1,5 +1,6 @@
 import 'package:eluminousmobile/constants/k_classroom_screen.dart';
 import 'package:eluminousmobile/providers/classrooms.dart';
+import 'package:eluminousmobile/widgets/classroom_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class ClassroomScreen extends StatefulWidget {
 class _ClassroomScreenState extends State<ClassroomScreen> {
   @override
   Widget build(BuildContext context) {
-    final classrooms = Provider.of<Classrooms>(context);
+    final classes = Provider.of<Classrooms>(context).classrooms;
 
     return Scaffold(
       appBar: AppBar(
@@ -70,13 +71,15 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            ListView.builder(
-              itemBuilder: (ctx, index) => ,
-            ),
-          ],
+      body: ListView.builder(
+        itemCount: classes.length,
+        itemBuilder: (ctx, index) => ClassroomItems(
+          id: classes[index].classroomId,
+          title: classes[index].classroomTitle,
+          section: classes[index].classroomSection,
+          accessCode: classes[index].accessCode,
+          enrolledTotal: classes[index].enrolledTotal,
+          shift: classes[index].classroomShift,
         ),
       ),
       drawer: Drawer(),

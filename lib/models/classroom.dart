@@ -6,7 +6,7 @@ class Classroom {
   String classroomTitle;
   String classroomSection;
   String classroomShift;
-  double enrolledTotal;
+  int enrolledTotal;
 
   Classroom({
     this.classroomId,

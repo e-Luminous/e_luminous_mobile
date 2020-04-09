@@ -13,7 +13,7 @@ class Classrooms with ChangeNotifier {
   List<Classroom> _classrooms = [
     Classroom(
       classroomId: 0,
-      classroomTitle: 'Dhaka College: Physics-I',
+      classroomTitle: 'Dhaka College (HSC): Physics-I',
       classroomSection: 'A',
       classroomShift: 'Morning',
       accessCode: 'neqy71',
@@ -21,7 +21,7 @@ class Classrooms with ChangeNotifier {
     ),
     Classroom(
       classroomId: 1,
-      classroomTitle: 'Govt. Science: Physics-II',
+      classroomTitle: 'Govt. Science College: Physics-II',
       classroomSection: 'B',
       classroomShift: 'Day',
       accessCode: '9xmHaq',
@@ -29,7 +29,7 @@ class Classrooms with ChangeNotifier {
     ),
     Classroom(
       classroomId: 2,
-      classroomTitle: 'DMRC: Physics-II',
+      classroomTitle: 'Dhaka Residential Model College: Physics-II',
       classroomSection: 'F',
       classroomShift: 'Day',
       accessCode: 'S5f1f5',

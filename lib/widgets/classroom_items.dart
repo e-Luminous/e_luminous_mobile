@@ -8,7 +8,7 @@ class ClassroomItems extends StatelessWidget {
   final String section;
   final String shift;
   final String accessCode;
-  final double enrolledTotal;
+  final int enrolledTotal;
 
   ClassroomItems({
     @required this.id,
@@ -22,7 +22,7 @@ class ClassroomItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160.0,
+      height: 180.0,
       margin: const EdgeInsets.symmetric(
         vertical: 16.0,
         horizontal: 10.0,
@@ -30,7 +30,7 @@ class ClassroomItems extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
-            height: 164.0,
+            height: 184.0,
             margin: EdgeInsets.only(left: 30.0),
             decoration: BoxDecoration(
               color: Colors.white, // Color(0xFF333366)
@@ -38,8 +38,8 @@ class ClassroomItems extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               boxShadow: <BoxShadow>[
                 BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 15.0,
+                  color: Colors.black12,
+                  blurRadius: 35.0,
                   offset: Offset(0.0, 10.0),
                 ),
               ],
@@ -62,10 +62,16 @@ class ClassroomItems extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Icon(
-                        shift == "Morning" ? Icons.brightness_high : Icons.brightness_6,
-                        color: shift == "Morning" ? Colors.orange[700] : Colors.grey[800],
+                        shift == "Morning"
+                            ? Icons.brightness_high
+                            : Icons.brightness_6,
+                        color: shift == "Morning"
+                            ? Colors.orange[700]
+                            : Colors.grey[800],
                       ),
-                      SizedBox(width: 3.0,),
+                      SizedBox(
+                        width: 3.0,
+                      ),
                       Text(
                         "$shift",
                         style: TextStyle(
@@ -81,9 +87,11 @@ class ClassroomItems extends StatelessWidget {
                         Icons.group,
                         color: Colors.indigoAccent,
                       ),
-                      SizedBox(width: 3.0,),
+                      SizedBox(
+                        width: 3.0,
+                      ),
                       Text(
-                        "Section - $section",
+                        "Section - $section ($enrolledTotal)",
                         style: TextStyle(
                           fontFamily: 'Sans',
                           fontSize: 16.0,
@@ -92,7 +100,7 @@ class ClassroomItems extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 15.0),
+                  SizedBox(height: 24.0),
                   Row(
                     children: <Widget>[
                       GestureDetector(
@@ -102,7 +110,17 @@ class ClassroomItems extends StatelessWidget {
                         ),
                         onTap: () {},
                       ),
-                      SizedBox(width: 3.0,),
+                      SizedBox(
+                        width: 3.0,
+                      ),
+                      Text(
+                        "Code $accessCode",
+                        style: TextStyle(
+                          fontFamily: 'Sans',
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   )
                 ],

@@ -1,3 +1,4 @@
+import 'package:eluminousmobile/screens/classrooms_screen.dart';
 import 'package:eluminousmobile/screens/login_screen.dart';
 import 'package:eluminousmobile/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         RegistrationScreen.routeName: (ctx) => RegistrationScreen(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
       },
-      home: RegistrationScreen(),
+      home: ClassroomScreen(),
     );
   }
 }

@@ -10,6 +10,11 @@ class Classrooms with ChangeNotifier {
     return [..._classrooms];
   }
 
+  Future<void> fetchAndSetClassroom() async {
+    var classes = [...classrooms];
+    notifyListeners();
+  }
+
   String removeClassroom(int classroomId) {
     var message = "Class deleted successfully";
     try {

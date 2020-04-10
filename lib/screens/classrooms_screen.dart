@@ -16,6 +16,10 @@ class ClassroomScreen extends StatefulWidget {
 }
 
 class _ClassroomScreenState extends State<ClassroomScreen> {
+  Future<void> _refreshClasses(BuildContext context) async {
+    await Provider.of<Classrooms>(context, listen: false).fetchAndSetClassroom();
+  }
+
   @override
   Widget build(BuildContext context) {
     final classes = Provider.of<Classrooms>(context).classrooms;
@@ -71,15 +75,20 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: classes.length,
-        itemBuilder: (ctx, index) => ClassroomItems(
-          id: classes[index].classroomId,
-          title: classes[index].classroomTitle,
-          section: classes[index].classroomSection,
-          accessCode: classes[index].accessCode,
-          enrolledTotal: classes[index].enrolledTotal,
-          shift: classes[index].classroomShift,
+      body: RefreshIndicator(
+        color: Colors.deepOrangeAccent,
+        backgroundColor: Colors.black87,
+        onRefresh: () => _refreshClasses(context),
+        child: ListView.builder(
+          itemCount: classes.length,
+          itemBuilder: (ctx, index) => ClassroomItems(
+            id: classes[index].classroomId,
+            title: classes[index].classroomTitle,
+            section: classes[index].classroomSection,
+            accessCode: classes[index].accessCode,
+            enrolledTotal: classes[index].enrolledTotal,
+            shift: classes[index].classroomShift,
+          ),
         ),
       ),
       drawer: Drawer(),

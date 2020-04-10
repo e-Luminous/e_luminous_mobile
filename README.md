@@ -5,9 +5,9 @@ on building globally suitable mobile application that covers the laboratory syll
   
 ## Screens (CRUD)
 
-READ (onTap Refresh)             |  READ (Pull to Refresh)             | DELETE (Swipe to 🗑️)            | 
+😊 READ (onTap Refresh)             | DELETE (Swipe to 🗑️)     | 😀 READ (Pull to Refresh) | 
 :-------------------------:|:-------------------------:|:-------------------------:
-| ![onTap](https://media.giphy.com/media/J3RRK1NbadMo2vcsIT/giphy.gif)  | ![Pull](https://media.giphy.com/media/RIBA45L9k2aChb0ZS2/giphy.gif) | ![Delete](https://media.giphy.com/media/j3c7Dhh9t1aMctwQyC/giphy.gif) |
+| ![onTap](https://media.giphy.com/media/J3RRK1NbadMo2vcsIT/giphy.gif)  | ![Delete](https://media.giphy.com/media/j3c7Dhh9t1aMctwQyC/giphy.gif) | ![Pull](https://media.giphy.com/media/RIBA45L9k2aChb0ZS2/giphy.gif) |
 
 ## Screens (OAuth)
 

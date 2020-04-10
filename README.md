@@ -1,16 +1,15 @@
-# eLuminous - Firebase API Integration
-
-<p align="left">
-<br>
-  <a href="https://action-badges.now.sh/e-Luminous/src">
-    <img src="https://action-badges.now.sh/e-Luminous/src" alt="github-actions">
-  </a>
-</p>
+# eLuminous - 🔥 Firebase API Integration
 
 eLuminous is an application that comes with the idea to integrate eLearning concepts with virtual laboratory features. Currently, we are working
 on building globally suitable mobile application that covers the laboratory syllabus of international curriculum. 
   
-## Screens
+## Screens (CRUD)
+
+READ (onTap Refresh)             |  READ (Pull to Refresh)             | DELETE (Swipe to 🗑️)            | 
+:-------------------------:|:-------------------------:|:-------------------------:
+| ![onTap](https://media.giphy.com/media/J3RRK1NbadMo2vcsIT/giphy.gif)  | ![Pull](https://media.giphy.com/media/RIBA45L9k2aChb0ZS2/giphy.gif) | ![Delete](https://media.giphy.com/media/j3c7Dhh9t1aMctwQyC/giphy.gif) |
+
+## Screens (OAuth)
 
 SignIn             |  SignUp             | Navigation            | 
 :-------------------------:|:-------------------------:|:-------------------------:

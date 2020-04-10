@@ -5,3 +5,5 @@ const kAppBarTitleTextStyle = TextStyle(
   fontSize: 21.0,
   fontWeight: FontWeight.w700,
 );
+
+const kMaxContentFetchingTime = 2;

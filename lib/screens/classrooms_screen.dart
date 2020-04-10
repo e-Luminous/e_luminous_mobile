@@ -27,18 +27,23 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
         .fetchAndSetClassroom();
   }
 
+  void triggerProgressIndicator() {
+    setState(() {
+      _isLoading = true;
+    });
+
+    Timer timer =
+    new Timer(new Duration(seconds: kMaxContentFetchingTime), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-
-      Timer timer = new Timer(new Duration(seconds: 2), () {
-        setState(() {
-          _isLoading = false;
-        });
-      });
+      triggerProgressIndicator();
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -96,16 +101,23 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                 value: AppBarAction.Feedback,
               ),
             ],
+            onSelected: (value) {
+              if(value == AppBarAction.Refresh) {
+                triggerProgressIndicator();
+              }
+            },
           ),
         ],
       ),
       body: _isLoading
           ? Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                strokeWidth: 5.0,
+              ),
             )
           : RefreshIndicator(
-              color: Colors.deepOrangeAccent,
-              backgroundColor: Colors.black87,
+              backgroundColor: Colors.grey[800],
+              color: Colors.orangeAccent,
               onRefresh: () => _refreshClasses(context),
               child: ListView.builder(
                 itemCount: classes.length,

@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:eluminousmobile/constants/k_classroom_screen.dart';
 import 'package:eluminousmobile/providers/classrooms.dart';
 import 'package:eluminousmobile/widgets/classroom_items.dart';
@@ -16,8 +19,29 @@ class ClassroomScreen extends StatefulWidget {
 }
 
 class _ClassroomScreenState extends State<ClassroomScreen> {
+  var _isInit = true;
+  var _isLoading = false;
+
   Future<void> _refreshClasses(BuildContext context) async {
-    await Provider.of<Classrooms>(context, listen: false).fetchAndSetClassroom();
+    await Provider.of<Classrooms>(context, listen: false)
+        .fetchAndSetClassroom();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Timer timer = new Timer(new Duration(seconds: 2), () {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
   }
 
   @override
@@ -75,22 +99,26 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
           ),
         ],
       ),
-      body: RefreshIndicator(
-        color: Colors.deepOrangeAccent,
-        backgroundColor: Colors.black87,
-        onRefresh: () => _refreshClasses(context),
-        child: ListView.builder(
-          itemCount: classes.length,
-          itemBuilder: (ctx, index) => ClassroomItems(
-            id: classes[index].classroomId,
-            title: classes[index].classroomTitle,
-            section: classes[index].classroomSection,
-            accessCode: classes[index].accessCode,
-            enrolledTotal: classes[index].enrolledTotal,
-            shift: classes[index].classroomShift,
-          ),
-        ),
-      ),
+      body: _isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : RefreshIndicator(
+              color: Colors.deepOrangeAccent,
+              backgroundColor: Colors.black87,
+              onRefresh: () => _refreshClasses(context),
+              child: ListView.builder(
+                itemCount: classes.length,
+                itemBuilder: (ctx, index) => ClassroomItems(
+                  id: classes[index].classroomId,
+                  title: classes[index].classroomTitle,
+                  section: classes[index].classroomSection,
+                  accessCode: classes[index].accessCode,
+                  enrolledTotal: classes[index].enrolledTotal,
+                  shift: classes[index].classroomShift,
+                ),
+              ),
+            ),
       drawer: Drawer(),
     );
   }

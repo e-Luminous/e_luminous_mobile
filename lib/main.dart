@@ -1,6 +1,7 @@
 import 'package:eluminousmobile/providers/classrooms.dart';
 import 'package:eluminousmobile/screens/classrooms_screen.dart';
 import 'package:eluminousmobile/screens/login_screen.dart';
+import 'package:eluminousmobile/screens/modify_classroom_screen.dart';
 import 'package:eluminousmobile/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         routes: {
           RegistrationScreen.routeName: (ctx) => RegistrationScreen(),
           LoginScreen.routeName: (ctx) => LoginScreen(),
+          ModifyClassroomScreen.routeName: (ctx) => ModifyClassroomScreen(),
         },
         home: ClassroomScreen(),
       ),

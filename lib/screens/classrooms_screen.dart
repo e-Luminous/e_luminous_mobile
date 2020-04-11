@@ -3,7 +3,9 @@ import 'dart:io';
 
 import 'package:eluminousmobile/constants/k_classroom_screen.dart';
 import 'package:eluminousmobile/providers/classrooms.dart';
+import 'package:eluminousmobile/screens/modify_classroom_screen.dart';
 import 'package:eluminousmobile/widgets/classroom_items.dart';
+import 'package:eluminousmobile/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -32,8 +34,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
       _isLoading = true;
     });
 
-    Timer timer =
-    new Timer(new Duration(seconds: kMaxContentFetchingTime), () {
+    Timer timer = new Timer(new Duration(seconds: kMaxContentFetchingTime), () {
       setState(() {
         _isLoading = false;
       });
@@ -65,7 +66,9 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
               Icons.add,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed(ModifyClassroomScreen.routeName);
+            },
           ),
           PopupMenuButton(
             icon: Icon(Icons.more_vert),
@@ -102,7 +105,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
               ),
             ],
             onSelected: (value) {
-              if(value == AppBarAction.Refresh) {
+              if (value == AppBarAction.Refresh) {
                 triggerProgressIndicator();
               }
             },
@@ -131,7 +134,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                 ),
               ),
             ),
-      drawer: Drawer(),
+      drawer: DrawerWidget(),
     );
   }
 }

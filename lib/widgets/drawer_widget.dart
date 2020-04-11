@@ -1,21 +1,26 @@
+import 'package:eluminousmobile/screens/classrooms_screen.dart';
+import 'package:eluminousmobile/screens/modify_classroom_screen.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
-  Widget buildListTile(
-      {String title,
-        IconData icon,
-        BuildContext context,
-        Function tapHandler}) {
+  Widget buildListTile({
+    String title,
+    IconData icon,
+    BuildContext context,
+    Function tapHandler,
+    Color iconColor,
+  }) {
     return ListTile(
       leading: Icon(
         icon,
         size: 26.0,
+        color: iconColor,
       ),
       title: Text(
         title,
         style: TextStyle(
           fontFamily: 'Sans',
-          fontSize: 24.0,
+          fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -29,7 +34,7 @@ class DrawerWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 120.0,
+            height: 180.0,
             width: double.infinity,
             padding: EdgeInsets.only(top: 25.0, left: 15.0),
             alignment: Alignment.centerLeft,
@@ -43,6 +48,42 @@ class DrawerWidget extends StatelessWidget {
                 fontFamily: 'Righteous',
               ),
             ),
+          ),
+          buildListTile(
+            title: 'Classrooms',
+            icon: Icons.assignment_ind,
+            tapHandler: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(ClassroomScreen.routeName);
+            },
+            context: context,
+            iconColor: Colors.green,
+          ),
+          buildListTile(
+            title: 'Add new',
+            icon: Icons.add_comment,
+            tapHandler: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(ModifyClassroomScreen.routeName);
+            },
+            context: context,
+            iconColor: Colors.orange,
+          ),
+          buildListTile(
+            title: 'My profile',
+            icon: Icons.face,
+            tapHandler: () {
+            },
+            context: context,
+            iconColor: Colors.green,
+          ),
+          buildListTile(
+            title: 'Send Feedback',
+            icon: Icons.feedback,
+            tapHandler: () {
+            },
+            context: context,
+            iconColor: Colors.grey[800],
           ),
         ],
       ),

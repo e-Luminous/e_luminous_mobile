@@ -1,3 +1,4 @@
+import 'package:eluminousmobile/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class ModifyClassroomScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
           ),
         ],
       ),
+      drawer: DrawerWidget(),
     );
   }
 }

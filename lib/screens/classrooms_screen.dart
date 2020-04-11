@@ -16,6 +16,7 @@ enum AppBarAction {
 }
 
 class ClassroomScreen extends StatefulWidget {
+  static const routeName = '/classroom';
   @override
   _ClassroomScreenState createState() => _ClassroomScreenState();
 }

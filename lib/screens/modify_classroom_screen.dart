@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:eluminousmobile/constants/k_classroom_screen.dart';
 import 'package:eluminousmobile/providers/classrooms.dart';
+import 'package:eluminousmobile/screens/classrooms_screen.dart';
 import 'package:eluminousmobile/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -57,10 +58,14 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
   void saveForm() {
     final isValid = _form.currentState.validate();
     if(!isValid) { return; }
-
     _form.currentState.save();
 
-    print(json.encode(_selectedClassroomMap));
+    if(_selectedClassroomMap['id'] == -1) {
+      Provider.of<Classrooms>(context, listen: false).addClassroom(_selectedClassroomMap);
+    } else {
+      // Update Product
+    }
+    Navigator.of(context).pushReplacementNamed(ClassroomScreen.routeName);
   }
 
   @override

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:eluminousmobile/models/classroom.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:random_string/random_string.dart';
 
 class Classrooms with ChangeNotifier {
   /*
@@ -9,6 +10,7 @@ class Classrooms with ChangeNotifier {
   ** data from the list annotated as _classrooms from API
    */
   List<Classroom> get classrooms {
+    _classrooms.sort((b, a) => a.classroomId.compareTo(b.classroomId));
     return [..._classrooms];
   }
 
@@ -19,6 +21,28 @@ class Classrooms with ChangeNotifier {
   Future<void> fetchAndSetClassroom() async {
     var classes = [...classrooms];
     notifyListeners();
+  }
+
+  void addClassroom(Map filteredClassroom) {
+    try {
+      final indexToSet = _classrooms.length;
+      final accessCodeToSet = randomAlphaNumeric(6);
+      final enrolledStudentToSet = 0;
+
+      final classroom = Classroom(
+        classroomId: indexToSet,
+        accessCode: accessCodeToSet,
+        enrolledTotal: enrolledStudentToSet,
+        classroomShift: filteredClassroom['shift'],
+        classroomSection: filteredClassroom['section'],
+        classroomTitle: filteredClassroom['title'],
+      );
+
+      _classrooms.add(classroom);
+      notifyListeners();
+    } catch(errorValue) {
+      print(errorValue);
+    }
   }
 
   String removeClassroom(int classroomId) {

@@ -12,6 +12,10 @@ class Classrooms with ChangeNotifier {
     return [..._classrooms];
   }
 
+  Classroom findById(int id) {
+    return _classrooms.firstWhere((classroom) => classroom.classroomId == id);
+  }
+
   Future<void> fetchAndSetClassroom() async {
     var classes = [...classrooms];
     notifyListeners();

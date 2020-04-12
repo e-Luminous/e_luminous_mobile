@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:eluminousmobile/providers/classrooms.dart';
+import 'package:eluminousmobile/screens/modify_classroom_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -82,123 +83,128 @@ class ClassroomItems extends StatelessWidget {
           vertical: 4.0,
         ),
       ),
-      child: Container(
-        height: 180.0,
-        margin: const EdgeInsets.symmetric(
-          vertical: 16.0,
-          horizontal: 10.0,
-        ),
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: 184.0,
-              margin: EdgeInsets.only(left: 30.0),
-              decoration: BoxDecoration(
-                color: Colors.white, // Color(0xFF333366)
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(8.0),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 35.0,
-                    offset: Offset(0.0, 10.0),
-                  ),
-                ],
-              ),
-              child: Container(
-                margin: EdgeInsets.fromLTRB(82.0, 16.0, 6.0, 16.0),
-                constraints: BoxConstraints.expand(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "$title",
-                      style: TextStyle(
-                        fontFamily: 'Sans',
-                        fontSize: 23.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+      child: GestureDetector(
+        onLongPress: () {
+          Navigator.of(context).pushReplacementNamed(ModifyClassroomScreen.routeName, arguments: id);
+        },
+        child: Container(
+          height: 180.0,
+          margin: const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 10.0,
+          ),
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: 184.0,
+                margin: EdgeInsets.only(left: 30.0),
+                decoration: BoxDecoration(
+                  color: Colors.white, // Color(0xFF333366)
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 35.0,
+                      offset: Offset(0.0, 10.0),
                     ),
-                    SizedBox(height: 15.0),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          shift == "Morning"
-                              ? Icons.brightness_high
-                              : Icons.brightness_6,
-                          color: shift == "Morning"
-                              ? Colors.orange[700]
-                              : Colors.grey[800],
-                        ),
-                        SizedBox(
-                          width: 3.0,
-                        ),
-                        Text(
-                          "$shift",
-                          style: TextStyle(
-                            fontFamily: 'Sans',
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: shift == "Morning" ? 10.0 : 35.0,
-                        ),
-                        Icon(
-                          Icons.group,
-                          color: Colors.indigoAccent,
-                        ),
-                        SizedBox(
-                          width: 3.0,
-                        ),
-                        Text(
-                          "Section - $section ($enrolledTotal)",
-                          style: TextStyle(
-                            fontFamily: 'Sans',
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 24.0),
-                    Row(
-                      children: <Widget>[
-                        GestureDetector(
-                          child: Icon(
-                            Icons.content_copy,
-                            size: 20.0,
-                          ),
-                          onTap: () {},
-                        ),
-                        SizedBox(
-                          width: 3.0,
-                        ),
-                        Text(
-                          "Code $accessCode",
-                          style: TextStyle(
-                            fontFamily: 'Sans',
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    )
                   ],
                 ),
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(82.0, 16.0, 6.0, 16.0),
+                  constraints: BoxConstraints.expand(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "$title",
+                        style: TextStyle(
+                          fontFamily: 'Sans',
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 15.0),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            shift == "Morning"
+                                ? Icons.brightness_high
+                                : Icons.brightness_6,
+                            color: shift == "Morning"
+                                ? Colors.orange[700]
+                                : Colors.grey[800],
+                          ),
+                          SizedBox(
+                            width: 3.0,
+                          ),
+                          Text(
+                            "$shift",
+                            style: TextStyle(
+                              fontFamily: 'Sans',
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: shift == "Morning" ? 10.0 : 35.0,
+                          ),
+                          Icon(
+                            Icons.group,
+                            color: Colors.indigoAccent,
+                          ),
+                          SizedBox(
+                            width: 3.0,
+                          ),
+                          Text(
+                            "Section - $section ($enrolledTotal)",
+                            style: TextStyle(
+                              fontFamily: 'Sans',
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 24.0),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            child: Icon(
+                              Icons.content_copy,
+                              size: 20.0,
+                            ),
+                            onTap: () {},
+                          ),
+                          SizedBox(
+                            width: 3.0,
+                          ),
+                          Text(
+                            "Code $accessCode",
+                            style: TextStyle(
+                              fontFamily: 'Sans',
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5.0),
-              alignment: FractionalOffset.centerLeft,
-              child: Image(
-                image: AssetImage(
-                    "assets/images/planet${new Random().nextInt(5)}.png"),
-                height: 108.0,
-                width: 108.0,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5.0),
+                alignment: FractionalOffset.centerLeft,
+                child: Image(
+                  image: AssetImage(
+                      "assets/images/planet${new Random().nextInt(5)}.png"),
+                  height: 108.0,
+                  width: 108.0,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

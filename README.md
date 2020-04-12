@@ -1,7 +1,9 @@
 # eLuminous - 🔥 Firebase API Integration
 
 eLuminous is an application that comes with the idea to integrate eLearning concepts with virtual laboratory features. Currently, we are working
-on building globally suitable mobile application that covers the laboratory syllabus of international curriculum. 
+on building globally suitable mobile application that covers the laboratory syllabus of international curriculum.
+
+[![Actions Status](https://github.com/e-Luminous/e_luminous_mobile/workflows/flutter-driver/badge.svg)](https://github.com/e-Luminous/e_luminous_mobile/runs/580970866?check_suite_focus=true) 
   
 ## Screens (CRUD with API) ↓↓
 

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:eluminousmobile/providers/classrooms.dart';
@@ -5,7 +6,7 @@ import 'package:eluminousmobile/screens/modify_classroom_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ClassroomItems extends StatelessWidget {
+class ClassroomItems extends StatefulWidget {
   final int id;
   final String title;
   final String section;
@@ -23,9 +24,43 @@ class ClassroomItems extends StatelessWidget {
   });
 
   @override
+  _ClassroomItemsState createState() => _ClassroomItemsState();
+}
+
+class _ClassroomItemsState extends State<ClassroomItems> with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = new AnimationController(
+      vsync: this,
+      duration: new Duration(seconds: 5),
+    );
+    animationController.repeat();
+  }
+
+  stopRotation(){
+    animationController.stop();
+  }
+
+  startRotation(){
+    animationController.repeat();
+  }
+  
+  @override
   Widget build(BuildContext context) {
+    stopRotation();
+
     return Dismissible(
-      key: ValueKey(id),
+      key: ValueKey(widget.id),
       confirmDismiss: (direction) {
         return showDialog(
             context: context,
@@ -50,7 +85,7 @@ class ClassroomItems extends StatelessWidget {
       },
       onDismissed: (direction) {
         final message =
-            Provider.of<Classrooms>(context, listen: false).removeClassroom(id);
+            Provider.of<Classrooms>(context, listen: false).removeClassroom(widget.id);
 
         Scaffold.of(context).showSnackBar(
           new SnackBar(
@@ -85,7 +120,10 @@ class ClassroomItems extends StatelessWidget {
       ),
       child: GestureDetector(
         onLongPress: () {
-          Navigator.of(context).pushReplacementNamed(ModifyClassroomScreen.routeName, arguments: id);
+          startRotation();
+          Timer timer = new Timer(new Duration(seconds: 1), () {
+            Navigator.of(context).pushReplacementNamed(ModifyClassroomScreen.routeName, arguments: widget.id);
+          });
         },
         child: Container(
           height: 180.0,
@@ -117,7 +155,7 @@ class ClassroomItems extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "$title",
+                        "${widget.title}",
                         style: TextStyle(
                           fontFamily: 'Sans',
                           fontSize: 23.0,
@@ -128,10 +166,10 @@ class ClassroomItems extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Icon(
-                            shift == "Morning"
+                            widget.shift == "Morning"
                                 ? Icons.brightness_high
                                 : Icons.brightness_6,
-                            color: shift == "Morning"
+                            color: widget.shift == "Morning"
                                 ? Colors.orange[700]
                                 : Colors.grey[800],
                           ),
@@ -139,7 +177,7 @@ class ClassroomItems extends StatelessWidget {
                             width: 3.0,
                           ),
                           Text(
-                            "$shift",
+                            "${widget.shift}",
                             style: TextStyle(
                               fontFamily: 'Sans',
                               fontSize: 16.0,
@@ -147,7 +185,7 @@ class ClassroomItems extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: shift == "Morning" ? 10.0 : 35.0,
+                            width: widget.shift == "Morning" ? 10.0 : 35.0,
                           ),
                           Icon(
                             Icons.group,
@@ -157,7 +195,7 @@ class ClassroomItems extends StatelessWidget {
                             width: 3.0,
                           ),
                           Text(
-                            "Section - $section ($enrolledTotal)",
+                            "Section - ${widget.section} (${widget.enrolledTotal})",
                             style: TextStyle(
                               fontFamily: 'Sans',
                               fontSize: 16.0,
@@ -180,7 +218,7 @@ class ClassroomItems extends StatelessWidget {
                             width: 3.0,
                           ),
                           Text(
-                            "Code $accessCode",
+                            "Code ${widget.accessCode}",
                             style: TextStyle(
                               fontFamily: 'Sans',
                               fontSize: 16.0,
@@ -196,11 +234,22 @@ class ClassroomItems extends StatelessWidget {
               Container(
                 margin: EdgeInsets.symmetric(vertical: 5.0),
                 alignment: FractionalOffset.centerLeft,
-                child: Image(
-                  image: AssetImage(
-                      "assets/images/planet${new Random().nextInt(5)}.png"),
-                  height: 108.0,
-                  width: 108.0,
+                child: AnimatedBuilder(
+                  animation: animationController,
+                  builder: (BuildContext context, Widget _widget) {
+                    return Transform.rotate(
+                      angle: animationController.value * 50.3,
+                      child: _widget,
+                    );
+                  },
+                  child: Container(
+                    child: Image(
+                      image: AssetImage(
+                          "assets/images/planet${new Random().nextInt(5)}.png"),
+                      height: 108.0,
+                      width: 108.0,
+                    ),
+                  ),
                 ),
               ),
             ],

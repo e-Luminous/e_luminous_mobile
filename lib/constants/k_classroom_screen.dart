@@ -14,11 +14,12 @@ const kSansLabel = TextStyle(
 
 const kSansLabelTitle = TextStyle(
   fontFamily: 'Sans',
-  color: Colors.grey,
-  fontSize: 15.0,
+  color: Colors.black87,
+  fontSize: 16.0,
+  fontWeight: FontWeight.w700,
 );
 
 const kSansRadio = TextStyle(
   fontFamily: 'Sans',
-  fontSize: 15.0,
+  fontSize: 18.0,
 );

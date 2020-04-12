@@ -3,9 +3,9 @@
 eLuminous is an application that comes with the idea to integrate eLearning concepts with virtual laboratory features. Currently, we are working
 on building globally suitable mobile application that covers the laboratory syllabus of international curriculum. 
   
-## Screens (CRUD)
+## Screens (CRUD with API) ↓↓
 
-😊 Create             | DELETE (Swipe to 🗑️)     | 😀 Edit (LongPress Spinning Planet) |
+😊 Create (with Validation)       | DELETE (Swipe to 🗑️)     | 😀 Edit (LongPress Spinning Planet) |
 :-------------------------:|:-------------------------:|:-------------------------:
 | ![create](https://media.giphy.com/media/ie7yqZnJTwsENUN8Xn/giphy.gif) | ![Delete](https://media.giphy.com/media/j3c7Dhh9t1aMctwQyC/giphy.gif) | ![Edit](https://media.giphy.com/media/iDfymWRpKr7x5D5IMx/giphy.gif) |
 

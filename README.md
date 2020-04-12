@@ -5,9 +5,14 @@ on building globally suitable mobile application that covers the laboratory syll
   
 ## Screens (CRUD)
 
-😊 READ (onTap Refresh)             | DELETE (Swipe to 🗑️)     | 😀 READ (Pull to Refresh) | 
+😊 Create             | DELETE (Swipe to 🗑️)     | 😀 Edit (LongPress Spinning Planet) |
 :-------------------------:|:-------------------------:|:-------------------------:
-| ![onTap](https://media.giphy.com/media/J3RRK1NbadMo2vcsIT/giphy.gif)  | ![Delete](https://media.giphy.com/media/j3c7Dhh9t1aMctwQyC/giphy.gif) | ![Pull](https://media.giphy.com/media/RIBA45L9k2aChb0ZS2/giphy.gif) |
+| ![create](https://media.giphy.com/media/ie7yqZnJTwsENUN8Xn/giphy.gif) | ![Delete](https://media.giphy.com/media/j3c7Dhh9t1aMctwQyC/giphy.gif) | ![Edit](https://media.giphy.com/media/iDfymWRpKr7x5D5IMx/giphy.gif) |
+
+
+😊 READ (onTap Refresh)   | Drawer | 😀 Edit (Pull to refresh)  | 
+:-------------------------:|:-------------------------:|:-------------------------:
+| ![onTap](https://media.giphy.com/media/J3RRK1NbadMo2vcsIT/giphy.gif)  | ![Drawer](https://media.giphy.com/media/j2fBxT5BL236dIZLbP/giphy.gif) | ![Pull](https://media.giphy.com/media/RIBA45L9k2aChb0ZS2/giphy.gif) |
 
 ## Screens (OAuth)
 

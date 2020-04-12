@@ -61,9 +61,9 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
     _form.currentState.save();
 
     if(_selectedClassroomMap['id'] == -1) {
-      Provider.of<Classrooms>(context, listen: false).addClassroom(_selectedClassroomMap);
+      Provider.of<Classrooms>(context, listen: false,).addClassroom(_selectedClassroomMap);
     } else {
-      // Update Product
+      Provider.of<Classrooms>(context, listen: false,).updateClassroom(_selectedClassroomMap);
     }
     Navigator.of(context).pushReplacementNamed(ClassroomScreen.routeName);
   }
@@ -97,11 +97,11 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Create Classroom',
+                        _selectedClassroomMap['id'] == -1 ? 'Create Classroom' : 'Edit Classroom',
                         style: TextStyle(
                           fontFamily: 'Sans',
                           fontWeight: FontWeight.w700,
-                          fontSize: 18.0,
+                          fontSize: 22.0,
                         ),
                       ),
                     ],

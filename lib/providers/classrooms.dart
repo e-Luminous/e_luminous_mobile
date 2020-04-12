@@ -10,8 +10,10 @@ class Classrooms with ChangeNotifier {
   ** data from the list annotated as _classrooms from API
    */
   List<Classroom> get classrooms {
-    _classrooms.sort((b, a) => a.classroomId.compareTo(b.classroomId));
-    return [..._classrooms];
+    // Copy and sort by descending
+    final baseClasses = [..._classrooms];
+    baseClasses.sort((b, a) => a.classroomId.compareTo(b.classroomId));
+    return baseClasses;
   }
 
   Classroom findById(int id) {
@@ -40,8 +42,29 @@ class Classrooms with ChangeNotifier {
 
       _classrooms.add(classroom);
       notifyListeners();
-    } catch(errorValue) {
+    } catch (errorValue) {
       print(errorValue);
+    }
+  }
+
+  void updateClassroom(Map filteredClassroom) {
+    try {
+      final classroomId = _classrooms
+          .firstWhere((c) => c.classroomId == filteredClassroom['id']).classroomId;
+
+      final updatedClassroom = Classroom(
+        classroomId: classroomId,
+        classroomTitle: filteredClassroom['title'],
+        classroomSection: filteredClassroom['section'],
+        classroomShift: filteredClassroom['shift'],
+        enrolledTotal: filteredClassroom['enrolled'],
+        accessCode: filteredClassroom['code'],
+      );
+
+      _classrooms[classroomId] = updatedClassroom;
+      notifyListeners();
+    } catch (error) {
+      print(error);
     }
   }
 

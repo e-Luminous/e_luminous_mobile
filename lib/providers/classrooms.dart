@@ -98,7 +98,7 @@ class Classrooms with ChangeNotifier {
     ),
     Classroom(
       classroomId: 2,
-      classroomTitle: 'Dhaka Residential Model College: Physics-II',
+      classroomTitle: 'Dhaka Residential: Physics-II',
       classroomSection: 'F',
       classroomShift: 'Day',
       accessCode: 'S5f1f5',

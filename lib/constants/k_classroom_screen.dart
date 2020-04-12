@@ -6,7 +6,7 @@ const kAppBarTitleTextStyle = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
-const kMaxContentFetchingTime = 2;
+const kMaxContentFetchingTime = 1;
 
 const kSansLabel = TextStyle(
   fontFamily: 'Sans',

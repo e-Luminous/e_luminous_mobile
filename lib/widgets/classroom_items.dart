@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:eluminousmobile/providers/classrooms.dart';
 import 'package:eluminousmobile/screens/modify_classroom_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ClassroomItems extends StatefulWidget {
@@ -118,36 +119,42 @@ class _ClassroomItemsState extends State<ClassroomItems> with SingleTickerProvid
           vertical: 4.0,
         ),
       ),
-      child: GestureDetector(
-        onLongPress: () {
-          startRotation();
-          Timer timer = new Timer(new Duration(seconds: 1), () {
-            Navigator.of(context).pushReplacementNamed(ModifyClassroomScreen.routeName, arguments: widget.id);
-          });
-        },
-        child: Container(
-          height: 180.0,
-          margin: const EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 10.0,
-          ),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: 184.0,
-                margin: EdgeInsets.only(left: 30.0),
-                decoration: BoxDecoration(
-                  color: Colors.white, // Color(0xFF333366)
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(8.0),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 35.0,
-                      offset: Offset(0.0, 10.0),
-                    ),
-                  ],
+      child: Container(
+        height: 180.0,
+        margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 10.0,
+        ),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 184.0,
+              margin: EdgeInsets.only(left: 30.0),
+              decoration: BoxDecoration(
+                color: Colors.white, // Color(0xFF333366)
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(8.0),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 35.0,
+                    offset: Offset(0.0, 10.0),
+                  ),
+                ],
+              ),
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(18.0),
                 ),
+                onPressed: () {},
+                color: Colors.white,
+                splashColor: Theme.of(context).accentColor,
+                onLongPress: () {
+                  startRotation();
+                  Timer timer = new Timer(new Duration(seconds: 1, milliseconds: 300,), () {
+                    Navigator.of(context).pushNamed(ModifyClassroomScreen.routeName, arguments: widget.id);
+                  });
+                },
                 child: Container(
                   margin: EdgeInsets.fromLTRB(82.0, 16.0, 6.0, 16.0),
                   constraints: BoxConstraints.expand(),
@@ -231,29 +238,29 @@ class _ClassroomItemsState extends State<ClassroomItems> with SingleTickerProvid
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 5.0),
-                alignment: FractionalOffset.centerLeft,
-                child: AnimatedBuilder(
-                  animation: animationController,
-                  builder: (BuildContext context, Widget _widget) {
-                    return Transform.rotate(
-                      angle: animationController.value * 50.3,
-                      child: _widget,
-                    );
-                  },
-                  child: Container(
-                    child: Image(
-                      image: AssetImage(
-                          "assets/images/planet${new Random().nextInt(5)}.png"),
-                      height: 108.0,
-                      width: 108.0,
-                    ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 5.0),
+              alignment: FractionalOffset.centerLeft,
+              child: AnimatedBuilder(
+                animation: animationController,
+                builder: (BuildContext context, Widget _widget) {
+                  return Transform.rotate(
+                    angle: animationController.value * 50.3,
+                    child: _widget,
+                  );
+                },
+                child: Container(
+                  child: Image(
+                    image: AssetImage(
+                        "assets/images/planet${new Random().nextInt(5)}.png"),
+                    height: 108.0,
+                    width: 108.0,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

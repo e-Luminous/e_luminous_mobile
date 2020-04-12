@@ -35,7 +35,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
       _isLoading = true;
     });
 
-    Timer timer = new Timer(new Duration(seconds: kMaxContentFetchingTime), () {
+    Timer timer = new Timer(new Duration(seconds: kMaxContentFetchingTime, milliseconds: 200), () {
       setState(() {
         _isLoading = false;
       });

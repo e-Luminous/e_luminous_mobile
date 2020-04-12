@@ -7,3 +7,18 @@ const kAppBarTitleTextStyle = TextStyle(
 );
 
 const kMaxContentFetchingTime = 2;
+
+const kSansLabel = TextStyle(
+  fontFamily: 'Sans',
+);
+
+const kSansLabelTitle = TextStyle(
+  fontFamily: 'Sans',
+  color: Colors.grey,
+  fontSize: 15.0,
+);
+
+const kSansRadio = TextStyle(
+  fontFamily: 'Sans',
+  fontSize: 15.0,
+);

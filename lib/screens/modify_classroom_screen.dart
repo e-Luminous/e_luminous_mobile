@@ -46,10 +46,21 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
         _selectedClassroomMap['title'] = selectedClassroom.classroomTitle;
         _selectedClassroomMap['section'] = selectedClassroom.classroomSection;
         _selectedClassroomMap['shift'] = selectedClassroom.classroomShift;
+      } else {
+        _selectedClassroomMap['shift'] = "Morning";
       }
     }
     _isInit = false;
     super.didChangeDependencies();
+  }
+
+  void saveForm() {
+    final isValid = _form.currentState.validate();
+    if(!isValid) { return; }
+
+    _form.currentState.save();
+
+    print(json.encode(_selectedClassroomMap));
   }
 
   @override
@@ -61,7 +72,7 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
             icon: Icon(
               Icons.save,
             ),
-            onPressed: () {},
+            onPressed: saveForm,
           ),
         ],
       ),
@@ -148,10 +159,11 @@ class _ModifyClassroomScreenState extends State<ModifyClassroomScreen> {
                       "Morning",
                       "Day",
                     ],
-                    picked: _selectedClassroomMap['shift'].toString().isEmpty
-                        ? "Morning"
-                        : _selectedClassroomMap['shift'].toString(),
+                    picked: _selectedClassroomMap['shift'].toString(),
                     labelStyle: kSansRadio,
+                    onSelected: (String selected) => setState((){
+                      _selectedClassroomMap['shift'] = selected;
+                    }),
                   ),
                 ],
               ),
